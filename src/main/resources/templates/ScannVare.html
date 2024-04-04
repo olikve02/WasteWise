@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcode Scanner</title>
+    <style>
+        #interactive {
+            position: relative;
+            width: 100%;
+        }
+        #video {
+            width: 100%;
+        }
+        #result {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<div id="interactive" class="viewport"></div>
+
+<form id="scannVare" method="POST" action="/scann-vare" th:action="@{/scann-vare}" th:object="${vare}">
+    <input type="text" id="strekkode" name="strekkode" th:value="${strekkode}" placeholder="Skriv strekkode eller scan">
+    <button type="submit">Submit</button>
+</form>
+
+
+<h1 id="result"></h1>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+<script>
+    Quagga.init({
+    inputStream : {
+        name : "Live",
+        type : "LiveStream",
+        target: document.querySelector('#video')    // Camera live stream
+    },
+    decoder : {
+        readers : ["ean_reader"]    // Define the barcode format to be read
+    }
+}, function(err) {
+    if (err) {
+        console.log(err);
+        return;
+    }
+    console.log("Initialization finished. Ready to start");
+    Quagga.start();    // Start Quagga
+});
+var lastDetectedBarcode = null;
+var detectionCount = 0;
+var requiredDetectionCount = 6;
+// Quagga event listener for barcode detection
+Quagga.onDetected(function(result) {
+
+    var code = result.codeResult.code;
+    // If the detected barcode is the same as the last one, increment the detection count
+    if (code === lastDetectedBarcode) {
+        detectionCount++;
+
+        // If the required number of detections is reached, consider it as the correct code
+        if (detectionCount >= requiredDetectionCount) {
+            document.getElementById('result').textContent = 'Barcode detected: ' + code;
+
+            document.getElementById("strekkode").value = code;
+            // Reset detection count and last detected barcode
+            detectionCount = 0;
+            lastDetectedBarcode = null;
+        }
+    } else {
+        // If a new barcode is detected, reset detection count and update last detected barcode
+        detectionCount = 1;
+        lastDetectedBarcode = code;
+    }
+});</script>
+</body>
+</html>
