@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="keywords" content="HTML, CSS"/>
+  <meta name="description" content=""/>
+  <title>Register User</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"/>
+  <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 67vh;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -5px;
+            margin-left: -5px;
+        }
+
+        .col {
+            flex: 0 0 50%;
+            max-width: 50%;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+
+        h1 {
+            font-size: 1.2em; /* Adjust the font size as needed */
+             text-align: center;
+             margin-top: 20px;
+             margin-bottom: 20px;
+        }
+
+        .text-danger {
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: red;
+            font-size: 0.8em;
+        }
+
+    </style>
+</head>
+<body>
+<h1>OPPRETT BRUKER</h1>
+<div class="container">
+  <form role="form" th:action="@{/save}" th:object="${user}" method="post">
+
+    <input type="hidden" th:field="*{userId}" />
+
+    <div class="form-group">
+      <label for="firstName">Fornavn</label>
+      <input
+              type="text"
+              class="form-control"
+              id="firstName"
+              name="firstName"
+              th:field="*{firstName}"
+              placeholder="Fornavn">
+
+      <div th:if="${#fields.hasErrors('firstName')}" class="text-danger">
+        <span th:errors="*{firstName}"></span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Fornavn</label>
+      <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              name="lastName"
+              th:field="*{lastName}"
+              placeholder="Etternavn">
+      <div th:if="${#fields.hasErrors('lastName')}" class="text-danger">
+        <span th:errors="*{lastName}"></span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phoneNumber">Telefonnummer</label>
+      <input
+              type="text"
+              class="form-control"
+              id="phoneNumber"
+              name="phoneNumber"
+              th:field="*{phoneNumber}"
+              placeholder="Telefonnummer">
+    </div>
+    <div class="row">
+      <div class="form-group col">
+        <label for="postalCode">Postnummer</label>
+        <input
+                type="text"
+                class="form-control"
+                id="postalCode"
+                name="postalCode"
+                th:field="*{postalCode}"
+                placeholder="Postnummer">
+      </div>
+      <div class="form-group col">
+        <label for="city">By</label>
+        <input
+                type="text"
+                class="form-control"
+                id="city"
+                name="city"
+                th:field="*{city}"
+                placeholder="By">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">E-post</label>
+      <input
+              type="text"
+              class="form-control"
+              id="email"
+              name="email"
+              th:field="*{email}"
+              placeholder="E-post">
+    </div>
+    <div class="form-group">
+      <label for="password">Passord</label>
+      <input
+              type="text"
+              class="form-control"
+              id="password"
+              name="password"
+              th:field="*{password}"
+              placeholder="Passord">
+    </div>
+    <button type="submit" class="btn btn-primary">OPPRETT BRUKER</button>
+  </form>
+</div>
+</body>
+</html>
