@@ -9,12 +9,52 @@
 </head>
 <body>
     <div class="mb-3">
-        <label>Name: <span th:text="${vare.navn}"></span></label>
-        <label>Name: <span th:text="${vare.materiale}"></span></label>
+        <label>Name: <span id="navn" th:text="${vare.navn}"></span></label>
+        <label>Materiale: <span id="materiale" th:text="${vare.materiale}"></span></label>
+        <p hidden id="strekkode" th:text="${vare.strekkode}"></p>
+        <p hidden id="instruksjon" th:text="${vare.instruksjon}"></p>
+        <p hidden id="vekt" th:text="vekt"></p>
 
-    <button class="btn-primary" onclick="">Legg til i handlevogn</button>
+    <button id="leggTilHandlekorg">Legg til i handlekorg</button>
     </div>
 
+    <script th:inline="javascript">
+        document.getElementById("leggTilHandlekorg").addEventListener("click", function (){
+            let strekkode =document.getElementById("strekkode").textContent;
+            let navn = document.getElementById("navn").textContent;
+            let materiale = document.getElementById("materiale").textContent;
+            let instruksjon = document.getElementById("instruksjon")
+            let vekt = document.getElementById("vekt")
 
+            let vare = {
+                strekkode: strekkode,
+                navn : navn,
+                materiale: materiale,
+                instruksjon: instruksjon,
+                vekt: vekt
+            }
+
+            let url = "http://localhost:8080/legg-til-handlekorg";
+
+            fetch(url,{
+                method: "POST",
+                headers: {
+                    "Content-Type" : "application/json"
+                },
+                body: JSON.stringify(vare)
+            }).then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+                .then(data => {
+                    console.log('POST request succeeded with JSON response', data);
+                })
+                .catch(error => {
+                    console.error('Error making POST request:', error);
+                });
+        })
+    </script>
 </body>
 </html>

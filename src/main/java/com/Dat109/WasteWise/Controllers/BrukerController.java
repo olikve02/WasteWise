@@ -22,7 +22,6 @@ public class BrukerController {
     @PostMapping("registrer-bruker")
     public String registrerBruker(@ModelAttribute Bruker bruker ){
         brukerService.leggTilBruker(bruker);
-
         return "redirect:/login";
     }
 }

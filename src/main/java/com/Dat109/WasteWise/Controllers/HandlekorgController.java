@@ -14,8 +14,13 @@ public class HandlekorgController {
     }
 
     @PostMapping("/legg-til-handlekorg")
-    public String leggTilHandlekorg(@ModelAttribute("vare") Vare vare){
+    public String leggTilHandlekorg(@RequestBody Vare vare){
         System.out.println(vare.getNavn());
         return "";
+    }
+
+    @GetMapping("/handlekorg")
+    public String visHandlevogn(){
+        return "Handlekorg";
     }
 }
