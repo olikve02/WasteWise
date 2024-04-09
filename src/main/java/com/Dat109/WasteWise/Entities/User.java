@@ -3,15 +3,8 @@ package com.Dat109.WasteWise.Entities;
 
 import jakarta.persistence.*;
 import jdk.jfr.DataAmount;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 
-
-@Data
-@Builder
 @Entity
 @Table(name="users", schema = "public")
 public class User {
