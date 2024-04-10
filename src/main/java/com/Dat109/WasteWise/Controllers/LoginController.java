@@ -71,7 +71,7 @@ public class LoginController {
         if(userService.userExists(email)) {
             User user = userService.fetchUser(email);
             session.setAttribute("user", user);
-            return "redirect:user-list";
+            return "redirect:home";
         } else {
             return "loginForm";
         }

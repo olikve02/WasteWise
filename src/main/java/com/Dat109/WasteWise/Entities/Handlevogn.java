@@ -14,23 +14,23 @@ public class Handlevogn {
 
     @ManyToOne
     @JoinColumn(name = "bruker_brukernavn")
-    private Bruker bruker;
+    private User user;
 
 
     public Handlevogn(){
 
     }
 
-    public Handlevogn(Bruker bruker) {
-        this.bruker = bruker;
+    public Handlevogn(User bruker) {
+        this.user = bruker;
     }
 
-    public Bruker getBruker() {
-        return bruker;
+    public User getBruker() {
+        return user;
     }
 
-    public void setBruker(Bruker bruker) {
-        this.bruker = bruker;
+    public void setBruker(User bruker) {
+        this.user = bruker;
     }
 
 

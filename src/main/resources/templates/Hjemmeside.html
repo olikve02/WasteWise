@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="no">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,7 @@
             <img src="/Wireframes/vuesax/linear/user.svg" alt="profilBilde">
         </div>
         <div class="profilInfo velkomst">
-            Hei, navn <br>
+            Hei, <spann th:text="${user.getFirstName()}"></spann> <br>
             by, land
         </div>
         <div class="profilInfo varsel">Varselsymbol</div>
@@ -66,11 +66,12 @@
             <ul>
                 <li class="active"> <img id="hjemKnapp" src="/Wireframes/vuesax/linear/house.svg" style="width:24px;height:24px;"></li>
 
-                <li><img id="stasjonKnapp" src="/Wireframes/vuesax/linear/location.svg" style="width:24px;height:24px;"></a></li>
+                <li> <img id="stasjonKnapp" src="/Wireframes/vuesax/linear/location.svg" style="width:24px;height:24px;"></a></li>
 
+                <li> <img id="handlekorgKnapp" src="/Wireframes/vuesax/linear/bag-happy.svg"></li>
 
-                <li><a href="laerMer.html"> <img src="/Wireframes/vuesax/linear/lamp-on.svg"></a></li>
-                <li><a href="profil.html"> <img src="/Wireframes/vuesax/linear/user.svg"></a></li>
+                <li><img id="profilKnapp" src="/Wireframes/vuesax/linear/user.svg"></li>
+
                 <li class="last"></li>
 
             </ul>
@@ -79,6 +80,25 @@
 
 </section>
 
-<script src="/src/main/resources/static/js/app.js"></script>
+<script>
+    document.getElementById("hjemKnapp").addEventListener("click", function(){
+        window.location.href = "/home";
+    })
+
+    document.getElementById("stasjonKnapp").addEventListener("click", function(){
+        //Har ikke laget html for stasjon enda
+        window.location.href = "/stasjon";
+    })
+
+    document.getElementById("handlekorgKnapp").addEventListener("click", function (){
+        window.location.href = "/handlekorg"
+    })
+
+    document.getElementById("profilKnapp").addEventListener("click", function () {
+        window.location.href = "/profil"
+    })
+
+</script>
+
 </body>
 </html>

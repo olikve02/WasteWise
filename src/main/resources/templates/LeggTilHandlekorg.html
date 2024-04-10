@@ -13,7 +13,7 @@
         <label>Materiale: <span id="materiale" th:text="${vare.materiale}"></span></label>
         <p hidden id="strekkode" th:text="${vare.strekkode}"></p>
         <p hidden id="instruksjon" th:text="${vare.instruksjon}"></p>
-        <p hidden id="vekt" th:text="vekt"></p>
+        <p hidden id="vekt" th:text="${vare.getVektgram()}"></p>
 
     <button id="leggTilHandlekorg">Legg til i handlekorg</button>
     </div>
@@ -23,17 +23,17 @@
             let strekkode =document.getElementById("strekkode").textContent;
             let navn = document.getElementById("navn").textContent;
             let materiale = document.getElementById("materiale").textContent;
-            let instruksjon = document.getElementById("instruksjon")
-            let vekt = document.getElementById("vekt")
+            let instruksjon = document.getElementById("instruksjon").textContent;
+            let vekt = document.getElementById("vekt").textContent;
 
             let vare = {
                 strekkode: strekkode,
                 navn : navn,
                 materiale: materiale,
                 instruksjon: instruksjon,
-                vekt: vekt
+                vektgram: vekt
             }
-
+            console.log(vare)
             let url = "http://localhost:8080/legg-til-handlekorg";
 
             fetch(url,{
