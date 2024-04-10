@@ -16,7 +16,9 @@
     --clr-text_color: #FFFFFF;
     --clr-text_color_dark: #000;
     --clr-light_green: #92BDA4;
+    --clr-button_green: #4A9168;
 }
+
 
 
 body {
@@ -91,7 +93,6 @@ section {
     grid-gap: 1em;
     position: relative;
     margin-bottom: 10px;
-
 }
 
 .avfallspunkt{
@@ -112,8 +113,6 @@ section {
     font-weight: 300;
     font-size: 1rem;
     text-align: left;
-
-
 }
 
 .avfallspunkt img{
@@ -165,3 +164,74 @@ section {
     border-radius: 15px 15px 0 0;
 }
 
+/*Scanne vare*/
+#interactive {
+  position: relative;
+  width: 350px;
+  margin: 44px auto 10px auto;
+  border-radius: 5px;
+
+}
+#video {
+  width: 100%;
+}
+#result {
+  position: relative;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  font-size: 16px;
+}
+
+#resultHeader{
+  position: relative;
+  font-size: 24px;
+  text-align: center;
+  padding: 20px;
+  margin: 90px auto 0px auto;
+}
+
+.formContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+
+}
+
+#scannVare{
+  text-align: center;
+}
+
+#scannVare input,
+#scannVare button{
+  display: block;
+  margin: 0px auto 10px auto;
+  align-items: center;
+}
+
+#scannVare input{
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+
+  margin-top: 70px;
+  color: var(--clr-text_color_dark);
+  background-color: var(--clr-light_green);
+}
+
+#scannVare button{
+  border:none;
+  border-radius: 15px;
+  margin: 30px auto 0px auto;
+
+  width: auto;
+  height: auto;
+  padding: 20px;
+
+  background-color: var(--clr-button_green);
+  color: var(--clr-text_color)
+}

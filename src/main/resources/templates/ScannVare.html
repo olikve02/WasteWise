@@ -9,38 +9,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <!--font awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
 
-    <link rel="stylesheet" href="/css/style2.css">
-    <style>
-        #interactive {
-            position: relative;
-            width: 100%;
-        }
-        #video {
-            width: 100%;
-        }
-        #result {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: rgba(255, 255, 255, 0.5);
-            padding: 10px;
-            font-size: 16px;
-        }
-    </style>
+    <link rel="stylesheet" href="style2.css">
+
 </head>
 <body>
+<h1 id="resultHeader">Scan strekkode</h1>
 <div id="interactive" class="viewport"></div>
 
-<form id="scannVare" method="POST" action="/scann-vare" th:action="@{/scann-vare}" th:object="${vare}">
-    <input type="text" id="strekkode" name="strekkode" th:value="${strekkode}" placeholder="Skriv strekkode eller scan">
-    <button type="submit">Submit</button>
-</form>
+<div class="formContainer">
+    <form id="scannVare" method="POST" action="/scann-vare" th:action="@{/scann-vare}" th:object="${vare}">
+        <input type="text" id="strekkode" name="strekkode" th:value="${strekkode}" placeholder="Skriv strekkode eller scan">
+        <button type="submit">Registrer</button>
+    </form>
+</div>
+
+<section>
+    <div class="wrapper">
+        <button href="index.html" class="hjemKnapp">
+            Hjem
+        </button>
+    </div>
+</section>
 
 
-<h1 id="result">Scanne vare</h1>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
 <script>
     Quagga.init({
