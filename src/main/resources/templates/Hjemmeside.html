@@ -10,23 +10,31 @@
     <!--font awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
 
-    <link rel="stylesheet" href="/css/style2.css">
+    <link rel="stylesheet" href="style2.css">
 </head>
 <body>
 <section>
     <div class="profilContainer">
-        <div class="profilInfo profilBilde">
-            <img src="/Wireframes/vuesax/linear/user.svg" alt="profilBilde">
-        </div>
         <div class="profilInfo velkomst">
-            Hei, <spann th:text="${user.getFirstName()}"></spann> <br>
-            
+            <h3>Hei, <spann th:text="${user.getFirstName()}"></spann></h3> <br>
+            Vennligst velg avfallspunkt for å registrere ditt avfall
         </div>
         
 
     </div>
 
+    <p id="velgPunkt">Velg avfallspunkt:</p>
+    <div class="avfallContainer">
+        <button class="avfallspunkt punkt">
+            <img src="/wireframes/kartBilde.png"/>
 
+            <div class="avfallInfo">
+                <h3>Avfallspunkt</h3>
+                <p>Eventuell info om avfallssted</p>
+            </div>
+
+        </button>
+    </div>
     <div class="avfallContainer">
         <ul>
             <li th:each="avfallpunkt : ${avfallpunkt}">
@@ -38,13 +46,9 @@
 <section>
     <div class="wrapper">
         <nav>
-            <ul>
-                <li class="active"> <a id="home"href="#"> <img id="hjemKnapp" src="/Wireframes/vuesax/linear/house.svg" style="width:24px;height:24px;"></li>
-
-                
-                <li class="last"></li>
-
-            </ul>
+            <button href="index.html" class="hjemKnapp">
+                Hjem
+            </button>
         </nav>
     </div>
 
