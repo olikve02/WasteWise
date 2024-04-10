@@ -22,4 +22,8 @@ public class AvfallPunktService {
     public void leggTilAvfallPunkt(AvfallPunkt avfallPunkt){
         avfallPunktRepo.save(avfallPunkt);
     }
+
+    public List<AvfallPunkt> finnAlleAvfallpunkt(){
+        return avfallPunktRepo.findAll();
+    }
 }

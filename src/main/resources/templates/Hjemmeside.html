@@ -28,7 +28,12 @@
 
 
     <div class="avfallContainer">
-        
+        <ul>
+            <li th:each="avfallpunkt : ${avfallpunkt}">
+                <button ><span th:text="${avfallpunkt.getNavn}"></span></button>
+
+            </li>
+        </ul>
     </div>
 </section>
 <section>
