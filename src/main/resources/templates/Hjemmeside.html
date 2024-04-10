@@ -30,8 +30,7 @@
     <div class="avfallContainer">
         <ul>
             <li th:each="avfallpunkt : ${avfallpunkt}">
-                <button ><span th:text="${avfallpunkt.getNavn}"></span></button>
-
+                <button onclick="avfallpunktKlikk()" ><span th:text="${avfallpunkt.getNavn}"></span></button>
             </li>
         </ul>
     </div>
@@ -62,13 +61,16 @@
     })
 
     document.getElementById("handlekorgKnapp").addEventListener("click", function (){
-        window.location.href = "/handlekorg"
+        window.location.href = "/handlekorg";
     })
 
     document.getElementById("profilKnapp").addEventListener("click", function () {
-        window.location.href = "/profil"
+        window.location.href = "/profil";
     })
 
+    function avfallpunktKlikk(){
+        window.location.href = "/scann-vare"
+    }
 </script>
 
 </body>
