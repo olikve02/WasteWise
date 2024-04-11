@@ -34,7 +34,7 @@ public class VareService {
         //Sender bruker til riktig view ettersom varen blir funnet eller ikke
         if(!vare.isPresent()){
             redirectAttributes.addFlashAttribute("error", "com.Dat109.WasteWise.Entities.Vare ikke funnet");
-            return "redirect:/scann-vare";
+            return "redirect:/registrer-vare";
         }else {
             //Sender med scannet vare til handlekorg viewet
             Vare vare1 = vare.get();

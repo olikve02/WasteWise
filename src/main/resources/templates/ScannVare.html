@@ -61,7 +61,10 @@
         target: document.querySelector('#video')    // Camera live stream
     },
     decoder : {
-        readers : ["ean_reader"]    // Define the barcode format to be read
+        readers : ["ean_reader"], debug : {
+            drawScanline : true,
+            drawBoundingBox : true
+        }    // Define the barcode format to be read
     }
 }, function(err) {
     if (err) {

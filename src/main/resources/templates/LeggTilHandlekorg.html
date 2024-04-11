@@ -9,13 +9,16 @@
 </head>
 <body>
     <div class="mb-3">
-        <label>Name: <span id="navn" th:text="${vare.navn}"></span></label>
-        <label>Materiale: <span id="materiale" th:text="${vare.materiale}"></span></label>
+        <label class="">Vare: <span id="navn" th:text="${vare.navn}"></span></label>
+        <br>
+        <label class="form-label">Materiale: <span id="materiale" th:text="${vare.materiale}"></span></label>
+        <br>
+        <label class="form-label">Instruksjon: <span id="instruksjon" th:text="${vare.instruksjon}"></span></label>
+        <br>
         <p hidden id="strekkode" th:text="${vare.strekkode}"></p>
-        <p hidden id="instruksjon" th:text="${vare.instruksjon}"></p>
         <p hidden id="vekt" th:text="${vare.getVektgram()}"></p>
 
-    <button id="leggTilHandlekorg">Legg til i handlekorg</button>
+    <button class="btn-primary" type="button" id="leggTilHandlekorg">Registrer Vare</button>
     </div>
 
     <script th:inline="javascript">
@@ -33,27 +36,39 @@
                 instruksjon: instruksjon,
                 vektgram: vekt
             }
-            console.log(vare)
-            let url = "http://localhost:8080/legg-til-handlekorg";
 
-            fetch(url,{
-                method: "POST",
-                headers: {
-                    "Content-Type" : "application/json"
-                },
-                body: JSON.stringify(vare)
-            }).then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
+            // Convert vare object to JSON string
+            let requestBody = JSON.stringify(vare);
+
+            // Define the URL to send the POST request to
+            let url = 'http://localhost:8080/legg-til-handlekorg';
+
+            // Create a new XMLHttpRequest object
+            let xhr = new XMLHttpRequest();
+
+            // Configure the request
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            // Set up event listeners to handle the response
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    console.log('Request successful');
+                    // Handle successful response from server
+                } else {
+                    console.error('Error making POST request:', xhr.statusText);
+                    // Handle error response from server
                 }
-                return response.json();
-            })
-                .then(data => {
-                    console.log('POST request succeeded with JSON response', data);
-                })
-                .catch(error => {
-                    console.error('Error making POST request:', error);
-                });
+            };
+
+            xhr.onerror = function() {
+                console.error('Error making POST request:', xhr.statusText);
+                // Handle network error
+            };
+
+// Send the request with the JSON string as the request body
+            xhr.send(requestBody);
+            window.location.href = "/home"
         })
     </script>
 </body>

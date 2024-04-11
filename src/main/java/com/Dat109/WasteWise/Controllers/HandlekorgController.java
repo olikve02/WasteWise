@@ -21,8 +21,8 @@ public class HandlekorgController {
 
     @PostMapping("/legg-til-handlekorg")
     public String leggTilHandlekorg(@RequestBody Vare vare, RedirectAttributes ra){
-
-        return "redirect:/handlekorg";
+        System.out.println(vare.getNavn());
+        return "redirect:/home";
     }
 
     @GetMapping("/handlekorg")
