@@ -43,26 +43,6 @@ public class LoginController {
         return "loginForm";
     }
 
-
-    /*
-    User logging in, gets sent to the homescreen.
-     */
-
-    /*
-    @PostMapping("/login")
-    public String login(@RequestParam("email") String email,
-                        @RequestParam("password") String password,
-                        Model model) {
-
-        userService.findByEmail(email);
-
-        model.addAttribute("email", email);
-
-        return "redirect:/homescreen";
-
-    }
-    */
-
     @PostMapping("/login")
     public String login(@RequestParam("email") String email,
                         @RequestParam("password") String password,
@@ -94,12 +74,14 @@ public class LoginController {
     }
 
     @PostMapping("/save")
-    public String saveUser(@ModelAttribute("user") User user) {
+    public String saveUser(@ModelAttribute("user") User user, HttpSession session) {
         // Save the user
         userService.saveUser(user);
 
+        // Set the user in the session
+        session.setAttribute("user", user);
         // Use a redirect to prevent duplicate submissions
-        return "redirect:/user-list";
+        return "redirect:/home";
     }
 
 
@@ -117,17 +99,6 @@ public class LoginController {
 
         return "EditUser";
     }
-
-    /*
-    // Used to update the current users information
-    @PostMapping("/user/edit")
-    public String updateUser(@PathVariable("userId") int userId, @ModelAttribute("user")  user) {
-        user.setUserId(userId);
-        userService.updateUser(user);
-        return "redirect:/user-list";
-    }
-
-*/
 
 
     // Deletes the user.

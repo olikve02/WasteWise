@@ -10,13 +10,15 @@
     <!--font awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
 
-    <link rel="stylesheet" href="style2.css">
+    <!-- La til /css/ men no viser ikkje knappene for avfallspunktene -->
+    <link rel="stylesheet" href="/css/style2.css">
 </head>
 <body>
 <section>
     <div class="profilContainer">
         <div class="profilInfo velkomst">
-            <h3>Hei, <spann th:text="${user.getFirstName()}"></spann></h3> <br>
+            <!-- La inn en sjekk for nullpointer exception, fikk feilmelding på hjem knappen på scan vare, but it works now -->
+            <h3>Hei, <spann th:text="${user != null ? user.getFirstName() : 'Guest'}"></spann></h3> <br>
             Vennligst velg avfallspunkt for å registrere ditt avfall
         </div>
         
@@ -46,7 +48,7 @@
 <section>
     <div class="wrapper">
         <nav>
-            <button href="index.html" class="hjemKnapp">
+            <button id="hjemKnapp" class="hjemKnapp">
                 Hjem
             </button>
         </nav>

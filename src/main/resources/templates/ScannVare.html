@@ -40,6 +40,17 @@
 </form>
 
 
+<!-- La inn hjemKnappen, kunne ikkje sjå den før :O -->
+<section>
+    <div class="wrapper">
+        <nav>
+            <button id="hjemKnapp" class="hjemKnapp">
+                Hjem
+            </button>
+        </nav>
+    </div>
+
+</section>
 <h1 id="result">Scanne vare</h1>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
 <script>
@@ -86,5 +97,15 @@ Quagga.onDetected(function(result) {
         lastDetectedBarcode = code;
     }
 });</script>
+
+<!-- La til script for hjem knappen -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("hjemKnapp").addEventListener("click", function(){
+        window.location.href = "/home";
+    });
+});
+</script>
+
 </body>
 </html>
