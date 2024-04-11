@@ -21,26 +21,21 @@
             <h3>Hei, <spann th:text="${user != null ? user.getFirstName() : 'Guest'}"></spann></h3> <br>
             Vennligst velg avfallspunkt for å registrere ditt avfall
         </div>
-        
-
     </div>
 
     <p id="velgPunkt">Velg avfallspunkt:</p>
-    <div class="avfallContainer">
-        <button class="avfallspunkt punkt">
-            <img src="/wireframes/kartBilde.png"/>
 
-            <div class="avfallInfo">
-                <h3>Avfallspunkt</h3>
-                <p>Eventuell info om avfallssted</p>
-            </div>
-
-        </button>
-    </div>
     <div class="avfallContainer">
         <ul>
             <li th:each="avfallpunkt : ${avfallpunkt}">
-                <button onclick="avfallpunktKlikk()" ><span th:text="${avfallpunkt.getNavn}"></span></button>
+                <button class="avfallspunkt punkt" onclick="avfallpunktKlikk()" ><span th:text="${avfallpunkt.getNavn}"></span>
+                    <img src="/wireframes/kartBilde.png"/>
+
+                <!--    <div class="avfallInfo">
+                        <h3>Avfallspunkt</h3>
+                        <p>Eventuell info om avfallssted</p>
+                    </div>-->
+                </button>
             </li>
         </ul>
     </div>
