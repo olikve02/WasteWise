@@ -26,22 +26,22 @@
 <h1 id="resultHeader">Registrer Vare</h1>
 <div class="formContainer">
     <form id="leggTilNyVare" method="POST" action="/reistrer-vare" th:action="@{/registrer-vare}" th:object="${vare}">
-        <label class="form-label">Strekkode</label>
-        <input class="form-control" type="text" id="strekkode" name="strekkode" th:field="*{strekkode}" placeholder="Skriv strekkode eller scan">
+        <label>Strekkode</label>
+        <input type="text" id="strekkode" name="strekkode" th:field="*{strekkode}" placeholder="Skriv strekkode eller scan">
         <br>
-        <label class="form-label">Navn</label>
-        <input class="form-control" type="text" name="navn" th:field="*{navn}" placeholder="Skriv inn produktets navn">
+        <label>Navn</label>
+        <input type="text" name="navn" th:field="*{navn}" placeholder="Skriv inn produktets navn">
         <br>
-        <label class="form-label">Instruksjon</label>
-        <input class="form-control" type="text" name="instruksjon" th:field="*{instruksjon}" placeholder="Hvordan skal produktet resirkuleres?">
+        <label>Instruksjon</label>
+        <input type="text" name="instruksjon" th:field="*{instruksjon}" placeholder="Hvordan skal produktet resirkuleres?">
         <br>
-        <label class="form-label">Materiale</label>
-        <input class="form-control" type="text" name="materiale" th:field="*{materiale}" placeholder="Hva er produktet laget av?">
+        <label>Materiale</label>
+        <input type="text" name="materiale" th:field="*{materiale}" placeholder="Hva er produktet laget av?">
         <br>
-        <label class="form-label">Vekt i gram</label>
-        <input class="form-control" type="number" name="vektGram" th:field="*{vektgram}" placeholder="Vekten på avfallet">
+        <label>Vekt i gram</label>
+        <input type="number" name="vektGram" th:field="*{vektgram}" placeholder="Vekten på avfallet">
 
-        <button class="" type="submit">Registrer</button>
+        <button type="submit">Registrer</button>
     </form>
 </div>
 <h1 id="result"></h1>

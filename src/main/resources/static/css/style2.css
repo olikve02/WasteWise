@@ -253,7 +253,7 @@ section {
   color: var(--clr-text_color)
 }
 
-
+/*Legg til ny vare*/
 #leggTilNyVare{
   margin-top: 15px;
   text-align: center;
@@ -290,3 +290,52 @@ section {
   background-color: var(--clr-button_green);
   color: var(--clr-text_color)
 }
+
+/*Login Form*/
+#logoImg{
+    display: flex;
+}
+
+#logoImg img{
+    width: 300px;
+    margin: 10px auto 0px auto;
+}
+
+#loginForm{
+  margin-top: 15px;
+  text-align: center;
+}
+
+#loginForm input,
+#loginForm button{
+  display: block;
+  margin: 0px auto 10px auto;
+  align-items: center;
+}
+
+#loginForm input{
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+
+  color: var(--clr-text_color_dark);
+  background-color: var(--clr-light_green);
+  box-shadow: var(--shadow);
+}
+
+#loginForm button{
+  border:none;
+  border-radius: 15px;
+  margin: 30px auto 15px auto;
+
+  width: auto;
+  height: auto;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  background-color: var(--clr-button_green);
+  color: var(--clr-text_color)
+}
+
+
