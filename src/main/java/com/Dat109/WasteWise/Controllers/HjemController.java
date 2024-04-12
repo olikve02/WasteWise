@@ -13,7 +13,7 @@ public class HjemController {
     @Autowired
     AvfallPunktService avfallPunktService;
 
-    @GetMapping("/") //  /home
+    @GetMapping("/home")
     public String visHjem(Model model, HttpSession session) {
 
         model.addAttribute("avfallpunkt", avfallPunktService.finnAlleAvfallpunkt());

@@ -153,6 +153,7 @@ section {
   width: 100%;
 
   border-radius: 15px 15px 0 0;
+
 }
 
 .wrapper .hjemKnapp{
@@ -225,6 +226,7 @@ section {
   display: block;
   margin: 0px auto 10px auto;
   align-items: center;
+  box-shadow: var(--shadow);
 }
 
 #scannVare input{
@@ -247,6 +249,44 @@ section {
   height: auto;
   padding: 20px;
 
+  background-color: var(--clr-button_green);
+  color: var(--clr-text_color)
+}
+
+
+#leggTilNyVare{
+  margin-top: 15px;
+  text-align: center;
+}
+
+#leggTilNyVare input,
+#leggTilNyVare button{
+  display: block;
+  margin: 0px auto 10px auto;
+  align-items: center;
+}
+
+#leggTilNyVare input{
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+
+  color: var(--clr-text_color_dark);
+  background-color: var(--clr-light_green);
+  box-shadow: var(--shadow);
+}
+
+#leggTilNyVare button{
+  border:none;
+  border-radius: 15px;
+  margin: 30px auto 0px auto;
+
+  width: auto;
+  height: auto;
+  padding: 20px;
+  box-shadow: var(--shadow);
   background-color: var(--clr-button_green);
   color: var(--clr-text_color)
 }

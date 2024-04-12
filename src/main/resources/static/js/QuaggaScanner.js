@@ -3,7 +3,10 @@ Quagga.init({
     inputStream : {
         name : "Live",
         type : "LiveStream",
-        target: document.querySelector('#video')    // Camera live stream
+        target: document.querySelector('#video'),    // Camera live stream
+        constraints: { //mulig vi må fjerne dette om det kødder til nokke
+            width: 350
+        },
     },
     decoder : {
         readers : ["ean_reader"]    // Define the barcode format to be read
