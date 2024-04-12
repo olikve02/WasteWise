@@ -13,32 +13,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
 
     <link rel="stylesheet" href="/css/style2.css">
-    <style>
-        #interactive {
-            position: relative;
-            width: 100%;
-        }
-        #video {
-            width: 100%;
-        }
-        #result {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: rgba(255, 255, 255, 0.5);
-            padding: 10px;
-            font-size: 16px;
-        }
-    </style>
+
 </head>
 <body>
-<div id="interactive" class="viewport"></div>
+<h1 id="resultHeader">Scan strekkode</h1>
+<div id="interactive" class="viewport">
+    <video class="videoCamera" autoplay preload="auto" src="" muted playsinline></video>
+    <canvas class="drawingBuffer"></canvas>
+</div>
 
-<form id="scannVare" method="POST" action="/scann-vare" th:action="@{/scann-vare}" th:object="${vare}">
-    <input type="text" id="strekkode" name="strekkode" th:value="${strekkode}" placeholder="Skriv strekkode eller scan">
-    <button type="submit">Submit</button>
-</form>
-
+<div class="formContainer">
+    <form id="scannVare" method="POST" action="/scann-vare" th:action="@{/scann-vare}" th:object="${vare}">
+        <input type="text" id="strekkode" name="strekkode" th:value="${strekkode}" placeholder="Skriv strekkode eller scan">
+        <button type="submit">Submit</button>
+    </form>
+</div>
 
 <!-- La inn hjemKnappen, kunne ikkje sjå den før :O -->
 <section>
@@ -51,14 +40,17 @@
     </div>
 
 </section>
-<h1 id="result">Scanne vare</h1>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
 <script>
     Quagga.init({
     inputStream : {
         name : "Live",
         type : "LiveStream",
-        target: document.querySelector('#video')    // Camera live stream
+        target: document.querySelector('#video'),    // Camera live stream
+        constraints: { //mulig vi må fjerne dette om det kødder til nokke
+            width: 350
+        },
     },
     decoder : {
         readers : ["ean_reader"], debug : {
