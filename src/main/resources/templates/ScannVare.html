@@ -79,8 +79,6 @@ Quagga.onDetected(function(result) {
 
         // If the required number of detections is reached, consider it as the correct code
         if (detectionCount >= requiredDetectionCount) {
-            document.getElementById('result').textContent = 'Barcode detected: ' + code;
-
             document.getElementById("strekkode").value = code;
             // Reset detection count and last detected barcode
             detectionCount = 0;
